@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Repository
 {
-    class AccountBalanceRepo :IAccountBalanceRepo
+    public class AccountBalanceRepo :IAccountBalanceRepo
     {
         private AdraFullTestFinalContext _DbContext;
-        public AccountBalanceRepo(AdraFullTestFinalContext adraFullTestFinalContext)
+        public AccountBalanceRepo()
         {
-            _DbContext = adraFullTestFinalContext;
+            _DbContext = new AdraFullTestFinalContext();
         }
 
 

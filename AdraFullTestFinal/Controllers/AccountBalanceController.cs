@@ -14,6 +14,9 @@ namespace AdraFullTestFinal.Controllers
     {
         private IAccountBalanceService _AccountBalanceService; // create object of AccountBalanceService in BL
 
+        public AccountBalanceController()
+        {
+        }
         public AccountBalanceController(IAccountBalanceService accountBalanceService)
         {
             _AccountBalanceService = accountBalanceService;
