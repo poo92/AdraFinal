@@ -10,10 +10,10 @@ namespace DataAccessLibrary.Repository
 {
     class AccountBalanceRepo :IAccountBalanceRepo
     {
-        private DbContext _DbContext;
-        public AccountBalanceRepo(AdraFullTestFinalContext adraFullTestFinalConext)
+        private AdraFullTestFinalContext _DbContext;
+        public AccountBalanceRepo(AdraFullTestFinalContext adraFullTestFinalContext)
         {
-            _DbContext = adraFullTestFinalConext;
+            _DbContext = adraFullTestFinalContext;
         }
 
 

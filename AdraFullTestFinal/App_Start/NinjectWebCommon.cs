@@ -10,6 +10,10 @@ namespace AdraFullTestFinal.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using BusinessLayer.Services;
+    using BusinessLayer.Services.Interfaces;
+    using DataAccessLibrary.Repository.Interface;
+    using DataAccessLibrary;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +65,9 @@ namespace AdraFullTestFinal.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IAccountBalanceService>().To<AccountBalanceService>().InRequestScope();
+            kernel.Bind<IAccountBalanceRepo>().To<IAccountBalanceRepo>().InRequestScope();
+            kernel.Bind<AdraFullTestFinalContext>().To<AdraFullTestFinalContext>().InRequestScope();
         }        
     }
 }
