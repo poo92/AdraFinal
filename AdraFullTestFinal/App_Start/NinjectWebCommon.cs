@@ -15,6 +15,8 @@ namespace AdraFullTestFinal.App_Start
     using DataAccessLibrary.Repository.Interface;
     using DataAccessLibrary;
     using DataAccessLibrary.Repository;
+    using System.Web.Http;
+    using Ninject.WebApi.DependencyResolver;
 
     public static class NinjectWebCommon 
     {
@@ -49,8 +51,9 @@ namespace AdraFullTestFinal.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
-                RegisterServices(kernel);
+                RegisterServices(kernel);                
                 return kernel;
             }
             catch
