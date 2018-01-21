@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using AdraFullTestFinal.Models;
 using AdraFullTestFinal.Providers;
 using AdraFullTestFinal.Results;
+using System.Linq;
 
 namespace AdraFullTestFinal.Controllers
 {
@@ -318,6 +319,24 @@ namespace AdraFullTestFinal.Controllers
             return logins;
         }
 
+        [Authorize]
+        [Route("UserRole")]
+        [HttpPost]
+        public async Task<IHttpActionResult> GetUserRole(GetUserRoleBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            string rolename = UserManager.GetRoles(user.Id).FirstOrDefault().ToString();
+
+            return Ok<string>(rolename); ;
+        }
+
+
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -335,9 +354,20 @@ namespace AdraFullTestFinal.Controllers
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
+            }else
+            {
+                if(model.AccountType == "admin")
+                {
+                    var finalResult = UserManager.AddToRole(user.Id, "admin");
+                }
+                else
+                {
+                    var finalResult = UserManager.AddToRole(user.Id, "normaluser");
+                }
+                
             }
 
-            return Ok();
+            return Ok<string>("User added to the system successfully");
         }
 
         // POST api/Account/RegisterExternal

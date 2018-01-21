@@ -48,6 +48,18 @@ namespace AdraFullTestFinal.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; }
+    }
+
+    public class GetUserRoleBindingModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
     }
 
     public class RegisterExternalBindingModel
