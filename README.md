@@ -7,5 +7,5 @@ To set up the project in development environment
 1. Clone or downlod the project
 2. Open with Visual studio
 3. Right click on the solution and click Manage NuGet packages and restore the packages
-4. Run update-database for both AdraFullTestFinal and DataAccessLibrary projects to populate the database.
+4. Run update-database command in package manager console for both AdraFullTestFinal and DataAccessLibrary projects to populate the database.
 5. Build and run the project.
