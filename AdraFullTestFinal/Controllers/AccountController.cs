@@ -20,7 +20,7 @@ using System.Linq;
 
 namespace AdraFullTestFinal.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -338,7 +338,7 @@ namespace AdraFullTestFinal.Controllers
 
 
         // POST api/Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {

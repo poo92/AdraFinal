@@ -23,7 +23,7 @@ namespace AdraFullTestFinal.Controllers
         }
 
         // method to upload the account balances
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [Route("api/AccountBalance/UploadBalance")]
         [HttpPost]
         public string UploadBalance(UserRequest userRequest)
@@ -117,7 +117,7 @@ namespace AdraFullTestFinal.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "admin")]
         // method to View  account balance of a month
         [Route("api/AccountBalance/ViewBalance")]
         [HttpPost]
@@ -132,7 +132,7 @@ namespace AdraFullTestFinal.Controllers
         }
 
         // method to View  account balance of a time period
-        [Authorize]
+        [Authorize(Roles = "admin")]
         [Route("api/AccountBalance/ViewBalanceChart")]
         [HttpPost]
         public List<AccountBalanceEntity> ViewBalanceChart(UserRequest userRequest)
@@ -148,7 +148,7 @@ namespace AdraFullTestFinal.Controllers
         }
 
         // method to View current  account balance by account type
-        [Authorize]
+        [Authorize(Roles = "admin,normaluser")]
         [Route("api/AccountBalance/ViewCurrentBalance")]
         [HttpPost]
         public double[] ViewCurrentBalance(UserRequest userRequest)
